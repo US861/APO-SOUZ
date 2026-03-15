@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #3498db;
+        }
+
+        .page {
+            flex: 1 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 500px;
+            height: 100vh;
+            max-height: 800px;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+            height: 44px;
+            line-height: 1;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .features {
+            padding: 100px 0 80px;
+            background-color: white;
+            scroll-margin-top: 60px; 
+            flex: 1 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #f8f8f8;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .contacts {
+            padding: 80px 0;
+            background-color: #f8f8f8;
+            flex: 1 0 auto;
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 20px;
+        }
+
+        .contact-item p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .map-section {
+            padding: 80px 0 40px;
+            background-color: white;
+            flex: 1 0 auto;
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .address-container {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .address-text {
+            font-size: 16px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            flex-shrink: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .search-section {
+            padding: 40px 0;
+            background-color: white;
+            flex: 1 0 auto;
+            min-height: 60vh;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            min-width: 0;
+            height: 44px;
+        }
+        
+        .search-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            padding: 10px 16px;
+            height: 44px;
+            font-size: 14px;
+            min-width: 140px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .auth-section {
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 auto;
+            min-height: 60vh;
+        }
+        
+        .auth-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .auth-card h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .btn-block {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .add-product-section {
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 auto;
+            min-height: 60vh;
+        }
+        
+        .add-product-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .add-product-card h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .search-container {
+                flex-direction: row;
+            }
+            
+            .search-input {
+                margin-right: 0;
+                margin-bottom: 0;
+                height: 42px;
+                font-size: 14px;
+            }
+            
+            .search-btn {
+                height: 42px;
+                padding: 8px 12px;
+                font-size: 12px;
+                min-width: 110px;
+            }
+            
+            .btn {
+                height: 42px;
+                padding: 8px 12px;
+                font-size: 12px;
+                line-height: 1;
+            }
+            
+            .features {
+                scroll-margin-top: 100px;
+                padding: 120px 0 80px;
+            }
+            
+            .hero {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                min-height: 100vh;
+                height: auto;
+                padding: 60px 0;
+            }
+            
+            .features,
+            .contacts,
+            .map-section {
+                padding: 80px 0;
+            }
+
+            .search-container {
+                flex-direction: row;
+            }
+
+            .search-btn {
+                min-width: 100px;
+                font-size: 11px;
+                padding: 8px 10px;
+            }
+
+            .search-input {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .search-container {
+                flex-direction: row;
+                gap: 8px;
+            }
+            
+            .search-input {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+            
+            .search-btn {
+                min-width: 90px;
+                font-size: 10px;
+                padding: 8px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="home-page" class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Категории</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>АПО СОЮЗ - Ваш надежный партнер</h1>
+                <p>Мы предоставляем качественные решения для бизнеса с 2010 года. Наша команда профессионалов готова помочь вам достичь новых высот.</p>
+                <a href="#features" class="btn" onclick="scrollToFeatures()">Подробнее</a>
+            </div>
+        </section>
+        
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Достоинства компании</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Высокое качество</h3>
+                        <p>Мы гарантируем высокое качество всех наших продуктов и услуг.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Надежность</h3>
+                        <p>Наша компания работает на рынке более 10 лет и заслужила доверие клиентов.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Инновации</h3>
+                        <p>Мы постоянно развиваемся и внедряем новые технологии в нашей работе.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contacts">
+            <div class="container">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <div class="contacts-grid">
+                    <div class="contact-item">
+                        <h3>Телефоны</h3>
+                        <p>+7 (495) 123-45-67</p>
+                        <p>+7 (495) 765-43-21</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Электронная почта</h3>
+                        <p>info@apo-soyuz.ru</p>
+                        <p>sales@apo-soyuz.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Время работы</h3>
+                        <p>Пн-Пт: 9:00 - 18:00</p>
+                        <p>Сб-Вс: выходной</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">Где нас найти</h2>
+                <div class="map-container">
+                    <div style="width: 100%; height: 100%; background-color: #e0e0e0; display: flex; align-items: center; justify-content: center;">
+                        <p>Карта будет здесь</p>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <p class="address-text">г. Москва, ул. Примерная, д. 123, Бизнес-центр "Стандарт"</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2010-2023 АПО СОЮЗ</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="categories-page" class="page" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Категории</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Поиск товаров...">
+                    <a href="#" class="btn search-btn" onclick="showPage('add-product-page')">Добавить товар</a>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('')"></div>
+                        <div class="product-info">
+                            <h3>Товар 1</h3>
+                            <p>Описание товара 1</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('')"></div>
+                        <div class="product-info">
+                            <h3>Товар 2</h3>
+                            <p>Описание товара 2</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('')"></div>
+                        <div class="product-info">
+                            <h3>Товар 3</h3>
+                            <p>Описание товара 3</p>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background-image: url('')"></div>
+                        <div class="product-info">
+                            <h3>Товар 4</h3>
+                            <p>Описание товара 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2010-2023 АПО СОЮЗ</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="auth-page" class="page" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Категории</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Авторизация</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Логин</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-block">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2010-2023 АПО СОЮЗ</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="add-product-page" class="page" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Категории</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="add-product-section">
+            <div class="container">
+                <div class="add-product-card">
+                    <h2>Добавление товара</h2>
+                    <form id="add-product-form">
+                        <div class="form-group">
+                            <label for="product-name">Название товара</label>
+                            <input type="text" id="product-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-image">Изображение товара</label>
+                            <input type="file" id="product-image" class="form-control" accept="image/*">
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary" onclick="showPage('categories-page')">Отменить</button>
+                            <button type="submit" class="btn">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2010-2023 АПО СОЮЗ</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            document.getElementById(pageId).style.display = 'flex';
+
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToFeatures() {
+            const featuresSection = document.getElementById('features');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const elementPosition = featuresSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        function initFormHandlers() {
+            const loginForm = document.getElementById('login-form');
+            const addProductForm = document.getElementById('add-product-form');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Форма авторизации отправлена!');
+                });
+            }
+            
+            if (addProductForm) {
+                addProductForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Товар добавлен!');
+                    showPage('categories-page');
+                });
+            }
+        }
+
+        window.onload = function() {
+            showPage('home-page');
+            initFormHandlers();
+        };
+    </script>
+</body>
+</html>
