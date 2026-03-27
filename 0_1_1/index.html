@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ</title>
+    <style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Arial', sans-serif;
+		}
+
+		html, body {
+			height: 100%;
+		}
+
+		html {
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+
+		body {
+			background-color: #F8FDF8;
+			color: #2D4A2D;
+			line-height: 1.6;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+
+		header {
+			background: linear-gradient(135deg, #568203, #456C02);
+			box-shadow: 0 2px 15px rgba(86, 130, 3, 0.3);
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			flex-shrink: 0;
+		}
+
+		.header-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 15px 0;
+		}
+
+		.logo {
+			font-size: 24px;
+			font-weight: bold;
+			color: white;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+		}
+
+		nav ul {
+			display: flex;
+			list-style: none;
+		}
+
+		nav ul li {
+			margin-left: 20px;
+		}
+
+		nav ul li a {
+			text-decoration: none;
+			color: white;
+			font-weight: 600;
+			transition: all 0.3s;
+			padding: 8px 15px;
+			border-radius: 20px;
+		}
+
+		nav ul li a:hover {
+			background-color: rgba(255, 255, 255, 0.2);
+			transform: translateY(-2px);
+		}
+
+		.page {
+			flex: 1 0 auto;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.hero {
+			position: relative;
+			min-height: 500px;
+			height: 100vh;
+			max-height: 800px;
+			background-image: linear-gradient(rgba(19, 19, 19, 0.4), rgba(19, 19, 19, 0.4)), url('images/photo.jpg');
+			background-size: cover;
+			background-position: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: white;
+			flex-shrink: 0;
+			box-sizing: border-box;
+		}
+
+		.hero-content {
+			max-width: 800px;
+			padding: 0 20px;
+		}
+
+		.hero h1 {
+			font-size: 36px;
+			margin-bottom: 20px;
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+		}
+
+		.hero p {
+			font-size: 18px;
+			margin-bottom: 30px;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(135deg, #87A556, #6B8E23);
+			color: white;
+			padding: 15px 30px;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			font-size: 18px;
+			text-decoration: none;
+			transition: all 0.3s;
+			white-space: nowrap;
+			height: 54px;
+			line-height: 1;
+			text-align: center;
+			font-weight: 600;
+			box-shadow: 0 6px 20px rgba(107, 142, 35, 0.4);
+		}
+
+		.btn:hover {
+			background: linear-gradient(135deg, #6B8E23, #87A556);
+			transform: translateY(-3px);
+			box-shadow: 0 8px 25px rgba(107, 142, 35, 0.5);
+		}
+
+		.features {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #FFFFFF, #F8FDF8);
+			scroll-margin-top: 60px;
+			flex: 1 0 auto;
+			border-bottom-left-radius: 25px;
+			border-bottom-right-radius: 25px;
+		}
+
+		.section-title {
+			text-align: center;
+			margin: -40px 0 40px;
+			font-size: 32px;
+			color: #568203;
+			font-weight: 700;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+		}
+
+		.feature-card {
+			background: white;
+			padding: 40px 30px;
+			border-radius: 15px;
+			text-align: center;
+			box-shadow: 0 8px 25px rgba(86, 130, 3, 0.1);
+			border: 2px solid #E8F5E8;
+			transition: all 0.3s ease;
+		}
+
+		.feature-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 30px rgba(86, 130, 3, 0.15);
+		}
+
+		.feature-icon {
+			width: 80px;
+			height: 80px;
+			margin: 0 auto 25px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: linear-gradient(135deg, #E8F5E8, #D4EDDA);
+			border-radius: 50%;
+			padding: 15px;
+			transition: transform 0.3s;
+		}
+
+		.feature-card:hover .feature-icon {
+			transform: scale(1.1);
+		}
+
+		.feature-icon img {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		.feature-card h3 {
+			margin-bottom: 15px;
+			color: #568203;
+			font-size: 22px;
+			font-weight: 600;
+		}
+
+		.feature-card p {
+			color: #5A725A;
+			font-size: 16px;
+			line-height: 1.5;
+		}
+
+		.map-section {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #F8FDF8, #E8F5E8);
+			flex: 1 0 auto;
+		}
+
+		.map-container {
+			height: 400px;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 8px 25px rgba(86, 130, 3, 0.15);
+			margin-bottom: 20px;
+			border: 2px solid #87A556;
+			position: relative;
+		}
+
+		.address-container {
+			text-align: center;
+			padding: 20px;
+			background: white;
+			border-radius: 15px;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			max-width: 500px;
+			margin-left: auto;
+			margin-right: auto;
+			border: 2px solid #E8F5E8;
+			box-shadow: 0 5px 15px rgba(86, 130, 3, 0.1);
+		}
+
+		.address-text {
+			font-size: 16px;
+			color: #568203;
+			font-weight: 600;
+		}
+
+		.contacts {
+			padding: 80px 0;
+			background: linear-gradient(135deg, #FFFFFF, #F8FDF8);
+			flex: 1 0 auto;
+		}
+
+		.contacts-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 25px;
+			max-width: 1000px;
+			margin: 0 auto;
+		}
+
+		.contact-item {
+			background: white;
+			padding: 25px;
+			border-radius: 15px;
+			text-align: center;
+			box-shadow: 0 8px 25px rgba(86, 130, 3, 0.1);
+			border: 2px solid #E8F5E8;
+			min-height: 180px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			transition: all 0.3s;
+		}
+
+		.contact-item:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 30px rgba(86, 130, 3, 0.15);
+		}
+
+		.contact-item h3 {
+			margin-bottom: 15px;
+			color: #568203;
+			font-size: 20px;
+			font-weight: 600;
+		}
+
+		.contact-item p {
+			font-size: 16px;
+			color: #5A725A;
+			line-height: 1.4;
+		}
+
+		footer {
+			background: linear-gradient(135deg, #456C02, #3A5C00);
+			color: white;
+			padding: 30px 0;
+			text-align: center;
+			flex-shrink: 0;
+			width: 100%;
+			margin-top: auto;
+		}
+
+		.search-section {
+			padding: 40px 0;
+			background: linear-gradient(135deg, #FFFFFF, #F8FDF8);
+			flex: 1 0 auto;
+			min-height: 60vh;
+		}
+
+		.search-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 30px;
+			gap: 15px;
+		}
+
+		.search-input {
+			flex: 1;
+			padding: 12px 20px;
+			border: 2px solid #D4EDDA;
+			border-radius: 25px;
+			font-size: 16px;
+			min-width: 0;
+			height: 50px;
+			background: white;
+			transition: all 0.3s;
+			box-shadow: 0 3px 10px rgba(86, 130, 3, 0.1);
+		}
+
+		.search-input:focus {
+			outline: none;
+			border-color: #87A556;
+			box-shadow: 0 5px 15px rgba(86, 130, 3, 0.2);
+		}
+
+		.search-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			padding: 12px 20px;
+			height: 50px;
+			font-size: 14px;
+			min-width: 140px;
+			text-align: center;
+			line-height: 1;
+			border-radius: 25px;
+		}
+
+		.products-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: 30px;
+		}
+
+		.product-card {
+			position: relative;
+			background: white;
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 8px 25px rgba(86, 130, 3, 0.1);
+			transition: all 0.3s;
+			cursor: pointer;
+			border: 2px solid #E8F5E8;
+		}
+
+		.product-card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 12px 30px rgba(86, 130, 3, 0.15);
+		}
+
+		.product-image {
+			height: 200px;
+			background: linear-gradient(135deg, #E8F5E8, #D4EDDA);
+			background-size: cover;
+			background-position: center;
+		}
+
+		.product-info {
+			padding: 20px;
+		}
+
+		.product-info h3 {
+			margin-bottom: 10px;
+			color: #568203;
+			font-weight: 600;
+		}
+
+		.product-info p {
+			color: #5A725A;
+		}
+
+		.delete-btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 35px;
+			height: 35px;
+			background: linear-gradient(135deg, #DC3545, #C82333);
+			color: white;
+			border: none;
+			border-radius: 50%;
+			font-size: 20px;
+			font-weight: bold;
+			cursor: pointer;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s;
+			z-index: 10;
+			box-shadow: 0 3px 10px rgba(220, 53, 69, 0.4);
+		}
+
+		.delete-btn:hover {
+			background: linear-gradient(135deg, #C82333, #DC3545);
+			transform: scale(1.15);
+		}
+
+		.delete-btn.visible {
+			display: flex;
+		}
+
+		.confirmation-modal {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(45, 74, 45, 0.8);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			z-index: 1000;
+		}
+
+		.confirmation-modal.visible {
+			display: flex;
+		}
+
+		.confirmation-content {
+			background: white;
+			padding: 30px;
+			border-radius: 15px;
+			text-align: center;
+			box-shadow: 0 15px 35px rgba(86, 130, 3, 0.2);
+			max-width: 400px;
+			width: 90%;
+			border: 2px solid #87A556;
+		}
+
+		.confirmation-buttons {
+			display: flex;
+			gap: 15px;
+			justify-content: center;
+			margin-top: 20px;
+		}
+
+		.confirmation-btn {
+			padding: 12px 25px;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			font-size: 14px;
+			transition: all 0.3s;
+			font-weight: 600;
+		}
+
+		.confirmation-btn.yes {
+			background: linear-gradient(135deg, #DC3545, #C82333);
+			color: white;
+		}
+
+		.confirmation-btn.yes:hover {
+			background: linear-gradient(135deg, #C82333, #DC3545);
+			transform: translateY(-2px);
+		}
+
+		.confirmation-btn.no {
+			background: linear-gradient(135deg, #6C757D, #5A6268);
+			color: white;
+		}
+
+		.confirmation-btn.no:hover {
+			background: linear-gradient(135deg, #5A6268, #6C757D);
+			transform: translateY(-2px);
+		}
+
+		.auth-section {
+			padding: 80px 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1 0 auto;
+			min-height: 60vh;
+			background: linear-gradient(135deg, #F8FDF8, #E8F5E8);
+		}
+
+		.auth-card {
+			background: white;
+			padding: 40px;
+			border-radius: 20px;
+			box-shadow: 0 15px 35px rgba(86, 130, 3, 0.15);
+			width: 100%;
+			max-width: 400px;
+			border: 2px solid #87A556;
+		}
+
+		.auth-card h2 {
+			text-align: center;
+			margin-bottom: 30px;
+			color: #568203;
+			font-weight: 700;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: 8px;
+			color: #568203;
+			font-weight: 600;
+		}
+
+		.form-control {
+			width: 100%;
+			padding: 12px 15px;
+			border: 2px solid #D4EDDA;
+			border-radius: 10px;
+			font-size: 16px;
+			background: white;
+			font-family: 'Arial', sans-serif;
+			resize: none;
+			transition: all 0.3s;
+		}
+
+		.form-control:focus {
+			outline: none;
+			border-color: #87A556;
+			box-shadow: 0 5px 15px rgba(86, 130, 3, 0.2);
+		}
+
+		.form-control[type="text"],
+		.form-control[type="password"],
+		.form-control[type="file"],
+		.form-control textarea {
+			width: 100%;
+			padding: 12px 15px;
+			border: 2px solid #D4EDDA;
+			border-radius: 10px;
+			font-size: 16px;
+			background: white;
+			font-family: 'Arial', sans-serif;
+		}
+
+		.form-control textarea {
+			resize: vertical;
+			min-height: 100px;
+			line-height: 1.4;
+		}
+
+		.btn-block {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+		}
+
+		.add-product-section {
+			padding: 80px 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex: 1 0 auto;
+			min-height: 60vh;
+			background: linear-gradient(135deg, #F8FDF8, #E8F5E8);
+		}
+
+		.add-product-card {
+			background: white;
+			padding: 40px;
+			border-radius: 20px;
+			box-shadow: 0 15px 35px rgba(86, 130, 3, 0.15);
+			width: 100%;
+			max-width: 500px;
+			border: 2px solid #87A556;
+		}
+
+		.add-product-card h2 {
+			text-align: center;
+			margin-bottom: 30px;
+			color: #568203;
+			font-weight: 700;
+		}
+
+		.btn-group {
+			display: flex;
+			gap: 15px;
+		}
+
+		.btn-secondary {
+			background: linear-gradient(135deg, #6C757D, #5A6268);
+		}
+
+		.btn-secondary:hover {
+			background: linear-gradient(135deg, #5A6268, #6C757D);
+		}
+
+		@media (max-width: 768px) {
+			.header-content {
+				flex-direction: column;
+				text-align: center;
+			}
+			
+			nav ul {
+				margin-top: 15px;
+				justify-content: center;
+			}
+			
+			nav ul li {
+				margin: 0 10px;
+			}
+			
+			.hero h1 {
+				font-size: 24px;
+			}
+			
+			.search-container {
+				flex-direction: row;
+			}
+			
+			.search-input {
+				margin-right: 0;
+				margin-bottom: 0;
+				height: 45px;
+				font-size: 14px;
+			}
+			
+			.search-btn {
+				height: 45px;
+				padding: 10px 15px;
+				font-size: 12px;
+				min-width: 120px;
+			}
+			
+			.btn {
+				padding: 12px 25px;
+				font-size: 16px;
+				height: 48px;
+				line-height: 1;
+			}
+			
+			.features {
+				scroll-margin-top: 100px;
+				padding: 60px 0;
+			}
+			
+			.contacts {
+				padding: 60px 0;
+			}
+			
+			.map-section {
+				padding: 60px 0;
+			}
+			
+			.section-title {
+				margin-bottom: 30px;
+				font-size: 28px;
+			}
+			
+			.hero {
+				height: auto;
+				min-height: 100vh;
+			}
+
+			.contacts-grid {
+				grid-template-columns: 1fr;
+				max-width: 400px;
+				gap: 20px;
+			}
+
+			.contact-item {
+				min-height: 160px;
+				padding: 20px;
+			}
+
+			.map-container {
+				height: 300px;
+			}
+			
+			.feature-card {
+				padding: 30px 20px;
+			}
+			
+			.feature-icon {
+				width: 70px;
+				height: 70px;
+				margin-bottom: 20px;
+				padding: 12px;
+			}
+			
+			.feature-card h3 {
+				font-size: 20px;
+			}
+			
+			.feature-card p {
+				font-size: 15px;
+			}
+		}
+    </style>
+</head>
+<body>
+    <div id="home-page" class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Каталог</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>АПО СОЮЗ - Ваш надежный партнер</h1>
+                <p>Мы организуем доставку свежих и качественных овощей по всему городу с 2014 года</p>
+                <a href="#features" class="btn" onclick="scrollToFeatures()">Подробнее</a>
+            </div>
+        </section>
+        
+        <section id="features" class="features">
+			<div class="container">
+				<h2 class="section-title">Достоинства компании</h2>
+				<div class="features-grid">
+					<div class="feature-card">
+						<div class="feature-icon">
+							<img src="images/quality-icon.svg">
+						</div>
+						<h3>Высокое качество</h3>
+						<p>Мы гарантируем высокое качество всех наших продуктов и услуг.</p>
+					</div>
+					<div class="feature-card">
+						<div class="feature-icon">
+							<img src="images/reliability-icon.svg">
+						</div>
+						<h3>Надежность</h3>
+						<p>Наша компания работает 11 лет и заслужила доверие клиентов.</p>
+					</div>
+					<div class="feature-card">
+						<div class="feature-icon">
+							<img src="images/support-icon.svg">
+						</div>
+						<h3>Поддержка</h3>
+						<p>Мы готовы ответить на все ваши вопросы и помочь.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+        
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">Где нас найти?</h2>
+                <div class="map-container">
+                    <div style="position:relative;overflow:hidden;width:100%;height:100%;">
+                        <a href="https://yandex.ru/maps/39/rostov-na-donu/?utm_medium=mapframe&utm_source=maps" 
+                           style="color:#eee;font-size:12px;position:absolute;top:0px;left:10px;">Ростов‑на‑Дону</a>
+                        <a href="https://yandex.ru/maps/39/rostov-na-donu/?ll=39.709543%2C47.224448&utm_medium=mapframe&utm_source=maps&z=12" 
+                           style="color:#eee;font-size:12px;position:absolute;top:14px;left:10px;">Яндекс Карты — транспорт, навигация, поиск мест</a>
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=39.709543%2C47.224448&z=12" 
+                                width="100%" 
+                                height="100%" 
+                                frameborder="1" 
+                                allowfullscreen="true" 
+                                style="position:relative;border:none;">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <p class="address-text">г. Ростов-на-Дону</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contacts">
+            <div class="container">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <div class="contacts-grid">
+                    <div class="contact-item">
+                        <h3>Телефоны</h3>
+                        <p>+7 (495) 123-45-67</p>
+                        <p>+7 (495) 765-43-21</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Электронная почта</h3>
+                        <p>info@apo-soyuz.ru</p>
+                        <p>sales@apo-soyuz.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Время работы</h3>
+                        <p>Пн-Пт: 9:00 - 18:00</p>
+                        <p>Сб-Вс: выходной</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="categories-page" class="page" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Каталог</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Поиск товаров...">
+                    <a href="#" class="btn search-btn" onclick="showPage('add-product-page')">Добавить товар</a>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/tomat.png')"></div>
+                        <div class="product-info">
+                            <h3>Томат</h3>
+                            <p>300 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/yellow.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский желтый</h3>
+                            <p>400 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/red.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский красный</h3>
+                            <p>500 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/green.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский зеленый</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+					<div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/baklashan.png')"></div>
+                        <div class="product-info">
+                            <h3>Баклажан</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+					<div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/yarovoy.png')"></div>
+                        <div class="product-info">
+                            <h3>Чеснок яровой</h3>
+                            <p>300 руб за 1 кг</p>
+                        </div>
+                    </div>
+					<div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/strelok.png')"></div>
+                        <div class="product-info">
+                            <h3>Чеснок стрелок</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="confirmation-modal" id="confirmationModal">
+            <div class="confirmation-content">
+                <h3>Вы уверены, что хотите удалить товар?</h3>
+                <div class="confirmation-buttons">
+                    <button class="confirmation-btn yes" onclick="deleteProduct()">Да</button>
+                    <button class="confirmation-btn no" onclick="closeConfirmation()">Нет</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="container">
+                <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+            </div>
+        </footer>
+    </div>
+
+    <div id="auth-page" class="page" style="display: none;">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                            <li><a href="#" onclick="showPage('categories-page')">Каталог</a></li>
+                            <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Авторизация</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Логин</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-block">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+            </div>
+        </footer>
+    </div>
+
+<div id="add-product-page" class="page" style="display: none;">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">АПО СОЮЗ</div>
+                <nav>
+                    <ul>
+                        <li><a href="#" onclick="showPage('home-page')">Главная</a></li>
+                        <li><a href="#" onclick="showPage('categories-page')">Каталог</a></li>
+                        <li><a href="#" onclick="showPage('auth-page')">Авторизация</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="add-product-section">
+        <div class="container">
+            <div class="add-product-card">
+                <h2>Добавление товара</h2>
+                <form id="add-product-form">
+                    <div class="form-group">
+                        <label for="product-name">Название товара</label>
+                        <input type="text" id="product-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Описание товара</label>
+                        <textarea id="product-description" class="form-control" rows="4" placeholder="Введите описание товара..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Изображение товара</label>
+                        <input type="file" id="product-image" class="form-control" accept="image/*">
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-secondary" onclick="showPage('categories-page')">Отменить</button>
+                        <button type="submit" class="btn">Добавить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+        </div>
+    </footer>
+</div>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
+            });
+
+            document.getElementById(pageId).style.display = 'flex';
+
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToFeatures() {
+            const featuresSection = document.getElementById('features');
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = featuresSection.offsetTop - headerHeight + 18;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800;
+            let start = null;
+
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+
+            function easeInOutQuad(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        let currentDeleteButton = null;
+        let deleteTimeout = null;
+        let productToDelete = null;
+
+        function showDeleteButton(card) {
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.classList.remove('visible');
+            });
+            
+            const deleteBtn = card.querySelector('.delete-btn');
+            deleteBtn.classList.add('visible');
+            
+            clearTimeout(deleteTimeout);
+            deleteTimeout = setTimeout(() => {
+                deleteBtn.classList.remove('visible');
+            }, 3000);
+            
+            currentDeleteButton = deleteBtn;
+        }
+
+        function confirmDelete(event, button) {
+            event.stopPropagation();
+            clearTimeout(deleteTimeout);
+            
+            productToDelete = button.closest('.product-card');
+            document.getElementById('confirmationModal').classList.add('visible');
+        }
+
+        function closeConfirmation() {
+            document.getElementById('confirmationModal').classList.remove('visible');
+            productToDelete = null;
+            
+            if (currentDeleteButton) {
+                currentDeleteButton.classList.remove('visible');
+            }
+        }
+
+        function deleteProduct() {
+            if (productToDelete) {
+                productToDelete.remove();
+                alert('Товар удален!');
+            }
+            closeConfirmation();
+        }
+
+        document.getElementById('confirmationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeConfirmation();
+            }
+        });
+
+        function initFormHandlers() {
+            const loginForm = document.getElementById('login-form');
+            const addProductForm = document.getElementById('add-product-form');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Форма авторизации отправлена!');
+                });
+            }
+            
+            if (addProductForm) {
+                addProductForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Товар добавлен!');
+                    showPage('categories-page');
+                });
+            }
+        }
+
+        window.onload = function() {
+            showPage('home-page');
+            initFormHandlers();
+        };
+    </script>
+</body>
+</html>
