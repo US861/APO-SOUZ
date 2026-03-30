@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ - Каталог</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="categories.html">Каталог</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="auth.html">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Поиск товаров...">
+                    <a href="add-product.html" class="btn search-btn">Добавить товар</a>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/tomat.png')"></div>
+                        <div class="product-info">
+                            <h3>Томат</h3>
+                            <p>300 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/yellow.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский желтый</h3>
+                            <p>400 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/red.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский красный</h3>
+                            <p>500 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/green.png')"></div>
+                        <div class="product-info">
+                            <h3>Болгарский зеленый</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/baklashan.png')"></div>
+                        <div class="product-info">
+                            <h3>Баклажан</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/yarovoy.png')"></div>
+                        <div class="product-info">
+                            <h3>Чеснок яровой</h3>
+                            <p>300 руб за 1 кг</p>
+                        </div>
+                    </div>
+                    <div class="product-card" onclick="showDeleteButton(this)">
+                        <button class="delete-btn" onclick="confirmDelete(event, this)">×</button>
+                        <div class="product-image" style="background-image: url('catalog/strelok.png')"></div>
+                        <div class="product-info">
+                            <h3>Чеснок стрелок</h3>
+                            <p>350 руб за 1 кг</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="confirmation-modal" id="confirmationModal">
+            <div class="confirmation-content">
+                <h3>Вы уверены, что хотите удалить товар?</h3>
+                <div class="confirmation-buttons">
+                    <button class="confirmation-btn yes" onclick="deleteProduct()">Да</button>
+                    <button class="confirmation-btn no" onclick="closeConfirmation()">Нет</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="container">
+                <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

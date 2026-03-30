@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ - Авторизация</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="index.html">Главная</a></li>
+                            <li><a href="categories.html">Каталог</a></li>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="auth.html">Авторизация</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-card">
+                    <h2>Авторизация</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="username">Логин</label>
+                            <input type="text" id="username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Пароль</label>
+                            <input type="password" id="password" class="form-control" required>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacy-policy" class="checkbox-input" required>
+                                <span class="checkbox-custom"></span>
+                                Я согласен на обработку персональных данных
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-block" id="login-btn">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2014-2026 ООО "АПО "СОЮЗ"</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
