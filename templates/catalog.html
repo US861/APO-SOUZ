@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ - Каталог</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}">Главная</a></li>
+                            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+                            <li><a href="{{ url_for('about') }}">О нас</a></li>
+                            {% if logged_in %}
+                                <li><a href="{{ url_for('logout') }}" class="logout-btn">Выйти</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('auth') }}">Войти</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class="search-section">
+            <div class="container">
+                <div class="search-container">
+                    <input type="text"
+                           id="search-input"
+                           class="search-input"
+                           placeholder="Поиск товаров..."
+                           value="{{ search_query }}"
+                           autocomplete="off">
+                    {% if logged_in %}
+                        <a href="{{ url_for('add_product') }}" class="btn add-btn">Добавить товар</a>
+                    {% else %}
+                        <button class="btn add-btn disabled" disabled>Добавить товар</button>
+                    {% endif %}
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    {% for product in products %}
+                    <div class="product-card"
+                         data-id="{{ product.id }}"
+                         {% if logged_in %}onclick="showDeleteButton(this)"{% endif %}>
+                        {% if logged_in %}
+                        <button class="delete-btn" onclick="confirmDelete(event, {{ product.id }})">×</button>
+                        {% endif %}
+                        <div class="product-image"
+                             style="background-image: url('{{ url_for('static', filename=product.image_path) if product.image_path else url_for('static', filename='images/default-product.png') }}');">
+                        </div>
+                        <div class="product-info">
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ "%.2f"|format(product.price) }} руб за 1 кг</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <div class="confirmation-modal" id="confirmationModal">
+            <div class="confirmation-content">
+                <h3>Вы уверены, что хотите удалить товар?</h3>
+                <div class="confirmation-buttons">
+                    <button class="confirmation-btn yes" onclick="deleteProduct()">Да</button>
+                    <button class="confirmation-btn no" onclick="closeConfirmation()">Нет</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>© 2005-2026 ООО "АПО "СОЮЗ"</p>
+                <div class="footer-docs">
+                    <a href="#" target="_blank">Согласие на обработку перс данных</a>
+                    <a href="#" target="_blank">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        window.loggedIn = {{ 'true' if logged_in else 'false' }};
+    </script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

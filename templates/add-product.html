@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АПО СОЮЗ - Добавление товара</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}">Главная</a></li>
+                            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+                            <li><a href="{{ url_for('about') }}">О нас</a></li>
+                            {% if logged_in %}
+                                <li><a href="{{ url_for('logout') }}" class="logout-btn">Выйти</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('auth') }}">Войти</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class="add-product-section">
+            <div class="container">
+                <div class="add-product-card">
+                    <h2>Добавление товара</h2>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="product-name">Название товара *</label>
+                            <input type="text" id="product-name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">Цена (руб за 1 кг) *</label>
+                            <input type="number" id="product-price" name="price" class="form-control" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-image">Изображение товара</label>
+                            <input type="file" id="product-image" name="image" class="form-control" accept="image/*">
+                            <small class="form-text">Поддерживаемые форматы: JPG, PNG.</small>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url_for('catalog') }}'">Отменить</button>
+                            <button type="submit" class="btn">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <p>© 2005-2026 ООО "АПО "СОЮЗ"</p>
+                <div class="footer-docs">
+                    <a href="#" target="_blank">Согласие на обработку перс данных</a>
+                    <a href="#" target="_blank">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

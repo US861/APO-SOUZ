@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="АПО СОЮЗ – доставка свежих овощей с 2005 года. Широкий ассортимент, высокое качество, быстрая доставка по Ростову-на-Дону и области.">
+    <meta name="keywords" content="овощи, доставка овощей, свежие овощи, Ростов-на-Дону, АПО СОЮЗ, купить овощи">
+    <meta name="author" content="АПО СОЮЗ">
+    <meta property="og:title" content="АПО СОЮЗ – доставка свежих овощей">
+    <meta property="og:description" content="Свежие овощи с доставкой по Ростову-на-Дону. Большой выбор, низкие цены, качество гарантируем с 2005 года.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url_for('index', _external=True) }}">
+    <meta property="og:site_name" content="АПО СОЮЗ">
+    <link rel="canonical" href="{{ url_for('index', _external=True) }}">
+    <title>АПО СОЮЗ - Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "АПО СОЮЗ",
+      "description": "Доставка свежих овощей по Ростову-на-Дону",
+      "url": "{{ url_for('index', _external=True) }}",
+      "telephone": "+7 (918) 558-02-80",
+      "email": "2798080@mail.ru",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "проспект 40-летия Победы, 75Н",
+        "addressLocality": "Ростов-на-Дону",
+        "addressRegion": "Ростовская область",
+        "addressCountry": "RU"
+      },
+      "openingHours": "Everyday 09:00-19:00",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "47.240239",
+        "longitude": "39.823915"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">АПО СОЮЗ</div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}">Главная</a></li>
+                            <li><a href="{{ url_for('catalog') }}">Каталог</a></li>
+                            <li><a href="{{ url_for('about') }}">О нас</a></li>
+                            {% if logged_in %}
+                                <li><a href="{{ url_for('logout') }}" class="logout-btn">Выйти</a></li>
+                            {% else %}
+                                <li><a href="{{ url_for('auth') }}">Войти</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>АПО СОЮЗ - Ваш надежный партнер</h1>
+                <p>Мы организуем доставку свежих и качественных овощей по всему городу с 2005 года</p>
+                <a href="#features" class="btn" onclick="scrollToFeatures()">Подробнее</a>
+            </div>
+        </section>
+        <section id="features" class="features">
+            <div class="container">
+                <h2 class="section-title">Достоинства компании</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="{{ url_for('static', filename='images/quality-icon.svg') }}">
+                        </div>
+                        <h3>Высокое качество</h3>
+                        <p>Мы гарантируем высокое качество всех наших продуктов и услуг.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="{{ url_for('static', filename='images/reliability-icon.svg') }}">
+                        </div>
+                        <h3>Надежность</h3>
+                        <p>Наша компания работает 21 год и заслужила доверие клиентов.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <img src="{{ url_for('static', filename='images/support-icon.svg') }}">
+                        </div>
+                        <h3>Поддержка</h3>
+                        <p>Мы готовы ответить на все ваши вопросы и помочь.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="map-section">
+            <div class="container">
+                <h2 class="section-title">Где нас найти?</h2>
+                <div class="map-container">
+                    <div style="position:relative;overflow:hidden;width:100%;height:100%;">
+                        <a href="https://yandex.ru/maps/39/rostov-na-donu/?utm_medium=mapframe&utm_source=maps" 
+                           style="color:#eee;font-size:12px;position:absolute;top:0px;left:10px;">Ростов‑на‑Дону</a>
+                        <a href="https://yandex.ru/maps/39/rostov-na-donu/house/prospekt_40_letiya_pobedy_75n/Z0AYfgVjQEQBQFptfX51cX5gbQ==/?ll=39.823915%2C47.240239&utm_medium=mapframe&utm_source=maps&z=16.69" 
+                           style="color:#eee;font-size:12px;position:absolute;top:14px;left:10px;">Проспект 40-летия Победы, 75Н — Яндекс Карты</a>
+                        <iframe src="https://yandex.ru/map-widget/v1/?ll=39.823915%2C47.240239&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0MTc1MjM2MDIzElvQoNC-0YHRgdC40Y8sINCg0L7RgdGC0L7Qsi3QvdCwLdCU0L7QvdGDLCDQv9GA0L7RgdC_0LXQutGCIDQwLdC70LXRgtC40Y8g0J_QvtCx0LXQtNGLLCA3NdCdIgoNr0sfQhVC9jxC&z=16.69" 
+                                width="100%" 
+                                height="100%" 
+                                frameborder="0" 
+                                allowfullscreen="true" 
+                                style="position:relative;border:none;">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="address-container">
+                    <p class="address-text">г. Ростов-на-Дону проспект 40-летия Победы, 75Н</p>
+                </div>
+            </div>
+        </section>
+        <section class="contacts">
+            <div class="container">
+                <h2 class="section-title">Свяжитесь с нами</h2>
+                <div class="contacts-grid">
+                    <div class="contact-item">
+                        <h3>Телефон</h3>
+                        <p>+7 (918) 558-02-80</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Электронная почта</h3>
+                        <p>2798080@mail.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Время работы</h3>
+                        <p>Каждый день с 9:00 до 19:00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>© 2005-2026 ООО "АПО "СОЮЗ"</p>
+                <div class="footer-docs">
+                    <a href="#" target="_blank">Согласие на обработку перс данных</a>
+                    <a href="#" target="_blank">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="container">
+            <p>
+                АПО СОЮЗ обрабатывает файлы cookie! Продолжая работу с сайтом,
+                вы соглашаетесь с обработкой файлов cookie вашего браузера.
+                Однако вы можете запретить обработку некоторых типов файлов cookie в настройках вашего браузера.
+            </p>
+            <div class="cookie-buttons">
+                <button id="cookieAccept" class="cookie-btn cookie-accept">Согласен</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
