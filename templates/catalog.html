@@ -55,7 +55,13 @@
                         </div>
                         <div class="product-info">
                             <h3>{{ product.name }}</h3>
-                            <p>{{ "%.2f"|format(product.price) }} руб за 1 кг</p>
+                            <p>
+                                {% if product.price == 0 %}
+                                    Цена договорная
+                                {% else %}
+                                    {{ "%.2f"|format(product.price) }} руб за 1 кг
+                                {% endif %}
+                            </p>
                         </div>
                     </div>
                     {% endfor %}

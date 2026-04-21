@@ -146,7 +146,7 @@ async function performSearch() {
                     <div class="product-image" style="background-image: url('${imageUrl}');"></div>
                     <div class="product-info">
                         <h3>${escapeHtml(product.name)}</h3>
-                        <p>${Number(product.price).toFixed(2)} руб за 1 кг</p>
+                        <p>${product.price == 0 ? 'Цена договорная' : Number(product.price).toFixed(2) + ' руб за 1 кг'}</p>
                     </div>
                 </div>
             `;
