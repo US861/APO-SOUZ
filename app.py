@@ -6,12 +6,12 @@ from functools import wraps
 
 app = Flask(__name__)
 # Секретный ключ для куки
-app.secret_key = ('1236178361836184578')
+app.secret_key = ('ключ')
 
 # Конфиги
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'  
-app.config['MYSQL_PASSWORD'] = '1234'  
+app.config['MYSQL_PASSWORD'] = 'пароль'
 app.config['MYSQL_DB'] = 'apo_soyuz'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -42,7 +42,6 @@ def auth():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM users WHERE username = %s", (username,))
         user = cur.fetchone()
@@ -70,7 +69,6 @@ def add_product():
     if request.method == 'POST':
         name = request.form['name']
         price = request.form['price']
-
         image_path = None
         image = request.files.get('image')
 
@@ -93,7 +91,6 @@ def add_product():
 
         flash('Товар успешно добавлен!', 'success')
         return redirect(url_for('catalog'))
-
     return render_template('add-product.html', logged_in=True)
 
 # Удаление товара

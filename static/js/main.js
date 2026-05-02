@@ -23,7 +23,6 @@ function scrollToFeatures() {
             t--;
             return -c / 2 * (t * (t - 2) - 1) + b;
         }
-
         requestAnimationFrame(animation);
     }
 }
@@ -159,7 +158,7 @@ async function performSearch() {
 
 // Инициализация всех компонентов при загрузке DOM
 document.addEventListener('DOMContentLoaded', function() {
-    // --- Обработка формы авторизации (если есть на странице) ---
+    // Обработка формы авторизации
     const loginForm = document.getElementById('login-form');
     const privacyCheckbox = document.getElementById('privacy-policy');
     const loginBtn = document.getElementById('login-btn');
@@ -182,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Кнопка добавления товара (отключение для неавторизованных)
+    // Кнопка добавления товара, отключение для неавторизованных
     const addBtn = document.querySelector('.add-btn');
     if (addBtn && addBtn.classList.contains('disabled')) {
         addBtn.style.opacity = '0.6';
